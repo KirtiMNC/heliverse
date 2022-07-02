@@ -1,0 +1,108 @@
+<html>
+<head>
+<title> Validate the Password </title>
+<style>
+    input{
+        width:100%;
+        padding: 10px;
+        border-radius: 10px;
+        border: 1px solid grey;
+        margin: 5px 0;
+    }
+    input:hover{
+        background-color: rgb(247, 248, 251);
+    }
+</style>
+
+</head>
+<script>
+function validateForm() {
+    //collect form data in JavaScript variables
+    var pw1 = document.getElementById("pswd1").value;
+    var pw2 = document.getElementById("pswd2").value;
+    var name = document.getElementById("name").value;
+    
+    //check empty first name field
+    if(name == "") {
+      document.getElementById("blankMsg").innerHTML = "**Fill the first name";
+      return false;
+    }
+    
+    //character data validation
+    if(!isNaN(name)){
+      document.getElementById("blankMsg").innerHTML = "**Only characters are allowed";
+      return false;
+    }
+
+  
+    //check empty password field
+    if(pw1 == "") {
+      document.getElementById("message1").innerHTML = "**Fill the password please!";
+      return false;
+    }
+  
+    //check empty confirm password field
+    if(pw2 == "") {
+      document.getElementById("message2").innerHTML = "**Enter the password please!";
+      return false;
+    } 
+   
+    //minimum password length validation
+    if(pw1.length < 8) {
+      document.getElementById("message1").innerHTML = "**Password length must be atleast 8 characters";
+      return false;
+    }
+
+    //maximum length of password validation
+    if(pw1.length > 15) {
+      document.getElementById("message1").innerHTML = "**Password length must not exceed 15 characters";
+      return false;
+    }
+  
+    if(pw1 != pw2) {
+      document.getElementById("message2").innerHTML = "**Passwords are not same";
+      return false;
+    } else {
+      alert ("Your password created successfully");
+    }
+ }
+</script>
+
+<body>
+    <div style="text-align: center; box-sizing: border-box;box-shadow: 5px 10px 15px 20px silver;margin: 100px ; ">
+<h1 style="color:green; background-color: skyblue; font-size: 50px;">Application Form:</h1>
+<h3 style="color:rgb(105, 144, 159); font-size:25px"> Verify valid password</h3>
+
+<form onsubmit ="return validateForm()"  style="width: 70%;  text-align: center;padding: 40px;  ">
+
+<!-- Enter first name -->
+<td > Full Name* </td>
+<input type = "text" id = "fname" value = ""required> 
+<span id = "blankMsg" style="color:red"> </span> <br><br>
+
+<!-- Enter last name -->
+<td> Last Name </td>
+<input type = "text" id = "lname" value = ""> 
+<span id = "charMsg" style="color:red"> </span> <br><br>
+
+<!-- Create a new password -->
+<td> Create Password* </td>
+<input type = "password" id = "pswd1" value = ""required> 
+<span id = "message1" style="color:red"> </span> <br><br>
+
+
+<td> Confirm Password* </td>
+<input type = "password" id = "pswd2" value = "" required> 
+<span id = "message2" style="color:red"> </span> <br><br>
+
+<!-- Click to verify valid password -->
+<button type = "submit" value = "Submit"  style=" margin:0 15px;font-size: 27px;padding:5px;border:none; background-color: skyblue;  border-radius: 10px;">Reset</button>
+
+<!-- Click to reset fields -->
+<button type = "reset" value = "Reset"  style=" font-size: 27px;padding:5px;border:none; background-color: skyblue;  border-radius: 10px;">Submit</button>
+</form>
+    </div>
+</body>
+</html>
+
+ 
